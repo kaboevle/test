@@ -17,11 +17,20 @@ class Vector:
     def __sub__(self,sub):
         return Vector(self.__x - sub.__x, self.__y - sub.__y)
     def __mul__(self,multi):
-        return Vector(self.__x * multi.__x, self.__y * multi.__y)
+        return Vector(self.__x * multi, self.__y * multi)
     def getlenght(self):
         return(sqrt(self.__x**2+self.__y**2))
     def scallar(self,scal):
         return(self.__x * scal.__x +self.__y * scal.__y)
+    def __truediv__(self,div):
+        return Vector(self.__x / div, self.__y / div)
+    def normalize(self):
+        return self/self.getlenght()
+    def dividere(self,diver):
+        return Vector(self.__x / diver, self.__y / diver)
+    def distance(self,dis):
+        return (sqrt((self.__x - dis.__x)**2+(self.__y - dis.__y)**2))
+    
     @property
     def x(self):
         return(self.__x)
@@ -29,17 +38,10 @@ class Vector:
     @property
     def y(self):
         return(self.__y)
-
-Nyvector = Vector(4,6)
-print(Nyvector)
-HeltNyVector = Vector(2,4)
-print(HeltNyVector)
-PlusVector = Nyvector + HeltNyVector
-print(PlusVector)
-subVector = Nyvector - HeltNyVector
-print(subVector)
-mulVector = Nyvector * HeltNyVector
-print(mulVector)
-print(Nyvector.getlenght())
-print(HeltNyVector.getlenght())
-print(Nyvector.scallar(HeltNyVector))
+    
+    @x.setter
+    def x(self,x):
+        self.__x = x
+    @y.setter
+    def y(self,y):
+        self.__y = y
